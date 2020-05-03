@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      常用Python标准库
+      
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/post.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="常用Python标准库" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="众所周知，Python有庞大的库资源，有官方标准库以及第三方的扩展库。每个库都一把利器，能帮助我们快速处理某方面的问题。作为一名python的初学者，当把基本的语法、列表和元组、字典、迭代器、异常处理、I/O操作、抽象等知识点学完之后。我建议把官方常用的标准库也随便学下来。讲真的，你知道这些库之后，你会有种相见恨晚的感觉。" />
+<meta property="og:description" content="众所周知，Python有庞大的库资源，有官方标准库以及第三方的扩展库。每个库都一把利器，能帮助我们快速处理某方面的问题。作为一名python的初学者，当把基本的语法、列表和元组、字典、迭代器、异常处理、I/O操作、抽象等知识点学完之后。我建议把官方常用的标准库也随便学下来。讲真的，你知道这些库之后，你会有种相见恨晚的感觉。" />
+<link rel="canonical" href="http://localhost:4000/16125.html" />
+<meta property="og:url" content="http://localhost:4000/16125.html" />
+<meta property="og:site_name" content="极客猴" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-05T11:53:39+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/16125.html","headline":"常用Python标准库","dateModified":"2016-12-05T11:53:39+08:00","datePublished":"2016-12-05T11:53:39+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/16125.html"},"description":"众所周知，Python有庞大的库资源，有官方标准库以及第三方的扩展库。每个库都一把利器，能帮助我们快速处理某方面的问题。作为一名python的初学者，当把基本的语法、列表和元组、字典、迭代器、异常处理、I/O操作、抽象等知识点学完之后。我建议把官方常用的标准库也随便学下来。讲真的，你知道这些库之后，你会有种相见恨晚的感觉。","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- 不算子统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav teal">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">极客猴</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+<!--             <a href="https://github.com/monkey-soft" target="_blank"><img class="circle z-depth-2" src="/assets/res/user.png"></a> -->
+            <img class="circle z-depth-2" src="/assets/res/user.png">
+            <span class="white-text name">猴哥</span>
+            <span class="white-text email">chanql123@163.com</span>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>首页</a></li>
+        <!-- <li><a class="waves-effect" href="/projects"><i class="material-icons">description</i>Github主页</a></li> -->
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>文章归档</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>热门标签</a></li>
+        <!-- <li><a class="waves-effect" href="/feed.xml" target="_blank"><i class="material-icons">rss_feed</i>RSS订阅</a></li> -->
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>关于我</a></li>
+        <!-- <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li> -->
+      </ul>
+    </header>
+    <main>
+
+<div class="container">
+  <div id="post-info">
+  <h3 class="post-title-color">常用Python标准库</h3>
+  <ul class="collapsible hoverable" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="发布日期">date_range</i>
+          2016-12-05 11:53
+          <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="展示更多">info</i>
+        </span>
+      </div>
+      <div class="collapsible-body">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="文章分类">sort</i>
+          
+          
+          
+          <a href="/categories#2016年_cap" target="_blank"><div class="chip">2016年</div></a>
+          
+        </span>
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="热门标签">label</i>
+          
+          
+          
+          <a href="/tags#python_cap" target="_blank"><div class="chip">Python</div></a>
+          
+          
+          
+          <a href="/tags#标准库_cap" target="_blank"><div class="chip">标准库</div></a>
+          
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- <div class="card hoverable">
+    <img class="card-img-top post-img" src="/img/2017/123.png" alt="Card image cap">
+</div> -->
+<div class="divider"></div>
+
+<div>
+    <i class="material-icons post-views-icon">person</i>
+    <span class="post-views-span">猴哥</span>
+    <i class="material-icons post-views-icon">remove_red_eye</i>
+    <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"> </span><span class="post-views-span"> 次浏览</span></span>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <p>众所周知，Python有庞大的库资源，有官方标准库以及第三方的扩展库。每个库都一把利器，能帮助我们快速处理某方面的问题。作为一名python的初学者，当把基本的语法、列表和元组、字典、迭代器、异常处理、I/O操作、抽象等知识点学完之后。我建议把官方常用的标准库也随便学下来。讲真的，你知道这些库之后，你会有种相见恨晚的感觉。</p>
+
+<p>接下来带大家走进python标准库的世界。PS： 使用Python的版本为Python3</p>
+
+<h3 id="0x01-字符串">0x01 字符串</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">re</code>: 正则表达式。用来判断字符串是否是你指定的特定字符串。在爬虫项目中，经常能捕获到它的身影。</li>
+  <li><code class="language-plaintext highlighter-rouge">StringIO</code>: 提供以文件为保存形式来读和写字符串。还有个性能更加好的<code class="language-plaintext highlighter-rouge">cStringIO</code>版本</li>
+  <li><code class="language-plaintext highlighter-rouge">struct</code>: 以二进制字节序列来解释字符串。可以通过格式化参数，指定类型、长度、字节序（大小端）、内存对齐等。</li>
+</ul>
+
+<h3 id="0x02-数据类型">0x02 数据类型</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">bisect</code>: 数组二分算法。提供支持按顺序对列表进行排序，而不必每次在列表中插入后再去排序。</li>
+  <li><code class="language-plaintext highlighter-rouge">heapq</code>: 堆队列算法。最小堆：完全平衡二叉树， 所有节点都小于字节点。</li>
+  <li><code class="language-plaintext highlighter-rouge">datetime</code>: 提供操作日期和时间的类。其中有两种日期和时间类型： <em>naive</em>和<em>aware</em></li>
+  <li><code class="language-plaintext highlighter-rouge">collections</code>: 高性能容器数据类型。实现了Python的通用内置容器、字典、列表、集合，和元组专门的数据类型提供替代品</li>
+  <li><code class="language-plaintext highlighter-rouge">pprint</code>: 提供”整洁低打印”任意Python数据结构的能力。</li>
+</ul>
+
+<h3 id="0x03-数学运算">0x03 数学运算</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">random</code>: 各种分布的伪随机数的生成器</li>
+  <li><code class="language-plaintext highlighter-rouge">math</code>: 数学函数。提供了由C标准的数学函数访问。该库的函数不适用于复数。</li>
+  <li><code class="language-plaintext highlighter-rouge">cmath</code>: 为复数提供的数学函数。</li>
+  <li><code class="language-plaintext highlighter-rouge">operator</code>: 提供了重载操作符</li>
+</ul>
+
+<h3 id="0x04-文件和目录">0x04 文件和目录</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">os.path</code>: 常用路径名操作。提供了操作路径名的常用的函数。</li>
+  <li><code class="language-plaintext highlighter-rouge">filecmp</code>: 文件和目录的比较。提供了比较文件和目录的函数。</li>
+  <li><code class="language-plaintext highlighter-rouge">shutil</code>: 高级的文件操作。提供了许多文件和文件集上的操作操作。尤其是提供支持文件复制和删除的函数。</li>
+</ul>
+
+<h3 id="0x05-数据存储">0x05 数据存储</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">serialization</code>: Python专用的序列化算法，通常不建议用来存储自定义数据。</li>
+  <li><code class="language-plaintext highlighter-rouge">pickle</code>: Python对象序列化。提供了一个基本但功能强大的Python对象序列化和反序列化算法。</li>
+  <li><code class="language-plaintext highlighter-rouge">cPickle</code>: 比<code class="language-plaintext highlighter-rouge">pickle</code>快1000倍的对象序列化库， 和<code class="language-plaintext highlighter-rouge">pickle</code>可互相替换。</li>
+  <li><code class="language-plaintext highlighter-rouge">shevle</code>: 将对象pickle序列化，然后保存到<em>anydbm</em>格式文件。<em>anydbm</em>是KV结构的数据库，可以保存多个序列化对象。</li>
+  <li><code class="language-plaintext highlighter-rouge">sqlite3</code>: SQLite数据库DB-API 2.0接口。</li>
+</ul>
+
+<h3 id="0x06-数据压缩">0x06 数据压缩</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">zipfile</code>: 提供了ZIP文件个创建、读取、写入、最佳和列出zip文件的函数。</li>
+  <li><code class="language-plaintext highlighter-rouge">tarfile</code>: 提供了tar文件的压缩和解压的函数。</li>
+</ul>
+
+<h3 id="0x07-文件格式">0x07 文件格式</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">csv</code>: 提供对CSV文件的读取和写入的函数。</li>
+</ul>
+
+<h3 id="0x08-加密">0x08 加密</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">hashlib</code>: 安全哈希和消息摘要。实现了一个通用的接口来实现多个不同的安全哈希和消息摘要算法。包括 FIPS 安全哈希算法 SHA1、SHA224、SHA256、SHA384和 SHA512（定义在 FIPS 180-2），以及 RSA 的 MD5 算法（在互联网 RFC 1321中定义)。</li>
+  <li><code class="language-plaintext highlighter-rouge">hmac</code>: 用于消息认证的加密哈希算法。实现了RFC 2104 中描述的HMAC 算法。</li>
+  <li><code class="language-plaintext highlighter-rouge">md5</code>: 实现了MD5加密算法。</li>
+  <li><code class="language-plaintext highlighter-rouge">sha</code>: 实现了sha1加密算法。</li>
+</ul>
+
+<h3 id="0x09-操作系统">0x09 操作系统</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">time</code>: 时间获取和转换。提供了各种与时间相关的函数。</li>
+  <li><code class="language-plaintext highlighter-rouge">argparse</code>: 命令行选项、参数和子命令的解析器。使用该库使得编码用户友好的命令行接口非常容易。取代了之前的<code class="language-plaintext highlighter-rouge">optparse</code></li>
+  <li><code class="language-plaintext highlighter-rouge">io</code>: 提供接口处理IO流。</li>
+  <li><code class="language-plaintext highlighter-rouge">logging</code>: Python的日志工具。提供了日志记录的API。</li>
+  <li><code class="language-plaintext highlighter-rouge">logging.config</code>: Python日志配置。用于配置日志模块的API。</li>
+  <li><code class="language-plaintext highlighter-rouge">os</code>: 提供丰富的雨MAC，NT，Posix等操作系统进行交互的能力。这个模块允许程序独立的于操作系统环境。文件系统，用户数据库和权限进行交互。</li>
+  <li><code class="language-plaintext highlighter-rouge">_thread</code>: 多线程控制。提供了一个底层、原始的操作 —— 多个控制线程共享全局数据空间。</li>
+  <li><code class="language-plaintext highlighter-rouge">threading</code>: 高级线程接口。是基于<code class="language-plaintext highlighter-rouge">_thread</code>模块的，但是比<code class="language-plaintext highlighter-rouge">_thread</code>更加容易使用、更高层次的线程API。</li>
+  <li><code class="language-plaintext highlighter-rouge">sys</code>: 提供访问和维护python解释器的能力。这包括了提示信息，版本，整数的最大值，可用模块，路径钩子，标准错误，标准输入输出的定位和解释器调用的命令行参数。</li>
+</ul>
+
+<h3 id="0x10-进程通信">0x10 进程通信</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">subprocess</code>: 管理子进程。允许用户产生新的进程，然后连接他们的输入/输出/错误/管道，并获取返回值。</li>
+  <li><code class="language-plaintext highlighter-rouge">socket</code>: 底层网络接口。</li>
+  <li><code class="language-plaintext highlighter-rouge">signal</code>: 设置异步时间处理handlers。信号是软中断，提供了一种异步事件通知机制。</li>
+</ul>
+
+<h3 id="0x11-网络数据处理">0x11 网络数据处理</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">json</code>: JSON格式的编码器和解码器。</li>
+  <li><code class="language-plaintext highlighter-rouge">base64</code>: 提供依据RFC 3548的规定（Base16, Base32, Base64 ）进行数据编码和解码。</li>
+  <li><code class="language-plaintext highlighter-rouge">htmllib</code>: 提供了一个HTML语法解析器。</li>
+  <li><code class="language-plaintext highlighter-rouge">mimetypes</code>: 提供了判断给定的URL的MIME类型。</li>
+</ul>
+
+<h3 id="0x12-操作因特网网络协议">0x12 操作因特网网络协议</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">urllib</code>: 提供了用于获取万维网数据的高层接口。这个是Python2.7版本的，Python3已经将其拆分成多个模块<code class="language-plaintext highlighter-rouge">urllib.request</code>，<code class="language-plaintext highlighter-rouge">urllib.parse</code>和<code class="language-plaintext highlighter-rouge">urllib.error</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">urlparse</code>: 提供了用于处理URL的函数，可以在URL和平台特定的文件名间相互转换。</li>
+  <li><code class="language-plaintext highlighter-rouge">http.client</code>: HTTP协议客户端。</li>
+  <li><code class="language-plaintext highlighter-rouge">telnetlib</code>: 提供了实现Telnet协议的Telnet类。</li>
+  <li><code class="language-plaintext highlighter-rouge">poplib</code>: POP3协议客户端。</li>
+  <li><code class="language-plaintext highlighter-rouge">ftplib</code>: FTP协议客户端。</li>
+  <li><code class="language-plaintext highlighter-rouge">smtplib</code>: SMTP协议客户端。</li>
+  <li><code class="language-plaintext highlighter-rouge">webbrowser</code>: 提供控制浏览器行为的函数。</li>
+</ul>
+
+<blockquote>
+  <p>本文原创发布于微信公众号「极客猴」，欢迎关注第一时间获取更多原创分享</p>
+</blockquote>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+    </main>
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">猴哥的个人博客: 极客猴。分享自己总结的Python爬虫，Web开发，数据分析的心得。 此外还输出自己的思考内容，涉猎产品知识、个人成长等，每周给你带来头脑大爆炸。</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container" style="text-align:center;">
+          &#xA9; 2019 极客猴. Powered by Jekyll&GitHub
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    <script src="/assets/js/post.js"></script>
+    
+    
+    
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

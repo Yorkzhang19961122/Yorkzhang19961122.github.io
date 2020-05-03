@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+      深入理解HTTP
+      
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/res/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/post.css">
+    
+    
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="深入理解HTTP" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="0x01 HTTP是什么" />
+<meta property="og:description" content="0x01 HTTP是什么" />
+<link rel="canonical" href="http://localhost:4000/161120.html" />
+<meta property="og:url" content="http://localhost:4000/161120.html" />
+<meta property="og:site_name" content="极客猴" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-11-20T22:35:13+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/161120.html","headline":"深入理解HTTP","dateModified":"2016-11-20T22:35:13+08:00","datePublished":"2016-11-20T22:35:13+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/161120.html"},"description":"0x01 HTTP是什么","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- 不算子统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="top-nav teal">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a class="page-title" href="/">极客猴</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <a href="#" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <ul id="slide-out" class="side-nav fixed">
+        <li>
+          <div class="userView">
+            <div class="background"></div>
+<!--             <a href="https://github.com/monkey-soft" target="_blank"><img class="circle z-depth-2" src="/assets/res/user.png"></a> -->
+            <img class="circle z-depth-2" src="/assets/res/user.png">
+            <span class="white-text name">猴哥</span>
+            <span class="white-text email">chanql123@163.com</span>
+          </div>
+        </li>
+        <li><a class="waves-effect" href="/"><i class="material-icons">home</i>首页</a></li>
+        <!-- <li><a class="waves-effect" href="/projects"><i class="material-icons">description</i>Github主页</a></li> -->
+        <li><a class="waves-effect" href="/categories"><i class="material-icons">sort</i>文章归档</a></li>
+        <li><a class="waves-effect" href="/tags"><i class="material-icons">label</i>热门标签</a></li>
+        <!-- <li><a class="waves-effect" href="/feed.xml" target="_blank"><i class="material-icons">rss_feed</i>RSS订阅</a></li> -->
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="/about"><i class="material-icons">person</i>关于我</a></li>
+        <!-- <li><a class="waves-effect" href="/contact"><i class="material-icons">email</i>Contact</a></li> -->
+      </ul>
+    </header>
+    <main>
+
+<div class="container">
+  <div id="post-info">
+  <h3 class="post-title-color">深入理解HTTP</h3>
+  <ul class="collapsible hoverable" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="发布日期">date_range</i>
+          2016-11-20 22:35
+          <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="展示更多">info</i>
+        </span>
+      </div>
+      <div class="collapsible-body">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="文章分类">sort</i>
+          
+          
+          
+          <a href="/categories#2016年_cap" target="_blank"><div class="chip">2016年</div></a>
+          
+        </span>
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="热门标签">label</i>
+          
+          
+          
+          <a href="/tags#http_cap" target="_blank"><div class="chip">HTTP</div></a>
+          
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- <div class="card hoverable">
+    <img class="card-img-top post-img" src="/img/2017/123.png" alt="Card image cap">
+</div> -->
+<div class="divider"></div>
+
+<div>
+    <i class="material-icons post-views-icon">person</i>
+    <span class="post-views-span">猴哥</span>
+    <i class="material-icons post-views-icon">remove_red_eye</i>
+    <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"> </span><span class="post-views-span"> 次浏览</span></span>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <h2 id="0x01-http是什么">0x01 HTTP是什么</h2>
+
+<blockquote>
+  <p>HTTP全称是HyperText Transfer Protocal，即：超文本传输协议。它主要规定了客户端和服务器之间的通信格式。HTTP还是一个基于请求/响应模式的、无状态的协议；即我们通常所说的Request/Response。</p>
+</blockquote>
+
+<h2 id="0x02-http与tcp的关系">0x02 HTTP与TCP的关系</h2>
+<p>TCP协议是位于TCP/IP参考模型中的网络互连层，而HTTP协议属于应用层。因此，HTTP协议是基于TCP协议。</p>
+
+<h2 id="0x03-http请求http-request">0x03 HTTP请求(HTTP Request)</h2>
+<p>HTTP请求由三部分组成，分别是：</p>
+<ul>
+  <li>请求行</li>
+  <li>HTTP头</li>
+  <li>请求体</li>
+</ul>
+
+<p>下面是请求示例：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /?tn=90058352_hao_pg HTTP/1.1
+Host: www.hao123.com
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/5.7.16400.16 Safari/537.36
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.8
+</code></pre></div></div>
+
+<h3 id="请求行">请求行</h3>
+<p>同样也是由请求方法（POST/GET）方式、请求的主机、协议版本号三部分组成。下面为请求行的示例：
+<code class="language-plaintext highlighter-rouge">GET /?tn=90058352_hao_pg HTTP/1.1</code></p>
+
+<h3 id="http头">HTTP头</h3>
+<p>HTTP头又细分为请求头(request header)、普通头(general header)、实体头(entity header)
+而HTTP头主要关注点是其字段</p>
+
+<h4 id="1-accept">1. Accept</h4>
+<p>作用: 浏览器可以接受的媒体类型
+例如：  <code class="language-plaintext highlighter-rouge">Accept: text/html</code>  代表浏览器可以接受服务器回发的类型为 text/html  也就是我们常说的html文档
+通配符 * 代表任意类型
+例如：  <code class="language-plaintext highlighter-rouge">Accept: */*</code>  代表浏览器可以处理所有类型,(一般浏览器发给服务器都是发这个)</p>
+
+<h4 id="2-accept-language">2. Accept-Language</h4>
+<p>作用： 浏览器申明自己接收的语言。 
+语言跟字符集的区别：中文是语言，中文有多种字符集，比如big5，gb2312，gbk等等；
+例如： <code class="language-plaintext highlighter-rouge">Accept-Language: zh-CN,zh</code></p>
+
+<h4 id="3-accept-encoding">3. Accept-Encoding</h4>
+<p>作用： 浏览器申明自己接收的编码方法，通常指定压缩方法（gzip，deflate）
+例如：<code class="language-plaintext highlighter-rouge">Accept-Encoding: gzip</code>, <code class="language-plaintext highlighter-rouge">Accept-Encoding: deflate</code></p>
+
+<h4 id="4-user-agent">4. User-Agent</h4>
+<p>作用： 告诉HTTP服务器， 客户端使用的操作系统的名称和版本以及浏览器的名称和版本.
+例如： <code class="language-plaintext highlighter-rouge">User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/5.7.16400.16 Safari/537.36</code></p>
+
+<h4 id="5-content-type">5. Content-Type</h4>
+<p>作用： 告诉服务器，请求的内容的类型
+常见的字段： 假设使用POST方式请求</p>
+<ul>
+  <li>text/xml              [请求体为文本]</li>
+  <li>application/json      [请求体为JSON数据]</li>
+  <li>application/xml       [请求体为xml数据]</li>
+  <li>image/jpeg            [请求体为jpeg图片]</li>
+  <li>multipart/form-data   [请求体为表单]</li>
+</ul>
+
+<h4 id="6-cookie">6. Cookie</h4>
+<p>作用： 最重要的header，将cookie的值发送给HTTP服务器</p>
+
+<h4 id="7-connection">7. Connection</h4>
+<p>例如：　<code class="language-plaintext highlighter-rouge">Connection: keep-alive</code>   当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接
+例如：  <code class="language-plaintext highlighter-rouge">Connection: close</code>  代表一个Request完成后，客户端和服务器之间用于传输HTTP数据的TCP连接会关闭， 当客户端再次发送Request，需要重新建立TCP连接。</p>
+
+<h4 id="8-content-length">8. Content-Length</h4>
+<p>作用：发送给HTTP服务器数据的长度。
+例如： <code class="language-plaintext highlighter-rouge">Content-Length: 18</code></p>
+
+<h4 id="9-referer">9. Referer:</h4>
+<p>作用： 提供了Request的上下文信息的服务器，告诉服务器我是从哪个链接过来的。</p>
+
+<h3 id="请求体">请求体</h3>
+<p>这个只有post方式请求才有，get方式请求没有。</p>
+
+<h4 id="0x04-http响应http-response">0x04 HTTP响应(HTTP Response)</h4>
+<p>HTTP Response的结构跟Request的结构基本一样。同样分为三部分：</p>
+<ul>
+  <li>响应行</li>
+  <li>响应头</li>
+  <li>响应体</li>
+</ul>
+
+<p>下面是响应示例：</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
+Cache-Control: max-age=0
+Content-Encoding: gzip
+Content-Length: 156474
+Content-Type: text/html;charset=UTF-8
+Cxy_all: 90058352_hao_pg+d4fa7f28cefb9b120f868558e440bafa
+Date: Sun, 20 Nov 2016 05:09:51 GMT
+Expires: Sun, 20 Nov 2016 05:09:51 GMT
+Lfy: nj02.11
+Server: BWS/1.0
+Set-Cookie: __bsi=11619936655404239050_00_60_N_R_126_0303_c02f_Y; max-age=3600; domain=www.hao123.com; path=/
+</code></pre></div></div>
+
+<h3 id="响应行">响应行</h3>
+<p>响应行由协议版本、响应状态构成
+下面为响应行的示例：
+<code class="language-plaintext highlighter-rouge">HTTP/1.1 200 OK</code></p>
+
+<h3 id="响应头">响应头</h3>
+<p>响应头关注点是字段，常见的字段如下：</p>
+
+<h4 id="1cache-control">1.Cache-Control</h4>
+<p>作用: 非常重要的规则。 这个用来指定Response-Request遵循的缓存机制。
+例如：
+<code class="language-plaintext highlighter-rouge">Cache-Control:Public</code>      可以被任何缓存所缓存
+<code class="language-plaintext highlighter-rouge">Cache-Control:Private</code>     内容只缓存到私有缓存中
+<code class="language-plaintext highlighter-rouge">Cache-Control:no-cache</code>    所有内容都不会被缓存</p>
+
+<h4 id="2content-type">2.Content-Type</h4>
+<p>作用：服务器告诉浏览器，自己响应的对象的类型和字符集
+例如:
+<code class="language-plaintext highlighter-rouge">Content-Type: text/html; charset=utf-8</code>
+<code class="language-plaintext highlighter-rouge">Content-Type: image/jpeg</code></p>
+
+<h4 id="3expires">3.Expires</h4>
+<p>作用: 浏览器会在指定过期时间内使用本地缓存
+例如: <code class="language-plaintext highlighter-rouge">Expires:Sun, 20 Nov 2016 05:09:51 GMT</code></p>
+
+<h4 id="4connection">4.Connection</h4>
+<p>跟HTTP头中的<code class="language-plaintext highlighter-rouge">Connection</code>是同样的原理</p>
+
+<h4 id="5content-encoding">5.Content-Encoding</h4>
+<p>跟HTTP中头的<code class="language-plaintext highlighter-rouge">Content-Encoding</code>是同样的原理</p>
+
+<h4 id="6content-length">6.Content-Length</h4>
+<p>作用：指明实体正文的长度，以字节方式存储的十进制数字来表示。
+例如: <code class="language-plaintext highlighter-rouge">Content-Length: 156474</code></p>
+
+<h4 id="7date">7.Date</h4>
+<p>作用: 生成消息的具体时间和日期
+例如: Date: Sun, 20 Nov 2016 05:09:51 GMT</p>
+
+<h3 id="响应体">响应体</h3>
+<p>响应体包含的内容是网页的内容信息，主要是html代码等</p>
+
+<blockquote>
+  <p>本文原创发布于微信公众号「极客猴」，欢迎关注第一时间获取更多原创分享</p>
+</blockquote>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+    </main>
+    <footer class="page-footer teal">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <img src="/assets/res/logo.png" alt="logo"/>
+            <p class="grey-text text-lighten-4">猴哥的个人博客: 极客猴。分享自己总结的Python爬虫，Web开发，数据分析的心得。 此外还输出自己的思考内容，涉猎产品知识、个人成长等，每周给你带来头脑大爆炸。</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container" style="text-align:center;">
+          &#xA9; 2019 极客猴. Powered by Jekyll&GitHub
+        </div>
+      </div>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    
+    
+    <script src="/assets/js/post.js"></script>
+    
+    
+    
+    
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

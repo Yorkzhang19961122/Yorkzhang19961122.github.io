@@ -13,28 +13,43 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Yorkzhang's notes
-description: > # this means to ignore newlines until "baseurl:"
-  This is my personal blog
-# baseurl: "/matjek"
+title: 极客猴
+subtitle: 猴哥的个人博客
+description: >- #
+  猴哥的个人博客: 极客猴。分享自己总结的Python爬虫，Web开发，数据分析的心得。
+  此外还输出自己的思考内容，涉猎产品知识、个人成长等，每周给你带来头脑大爆炸。
 baseurl: ""
-url: "https://yorkzhang19961122.github.io/"
-permalink: /:year/:month/:day/:title
-repository: yorkzhang19961122
-paginate: 5
+url: "https://monkey-soft.github.io"
+repository: monkey-soft
+# 文章链接格式, 伪 /%post_id.html%/
+permalink: /:short_year:i_month:i_day.html
+# permalink: /:year/:month/:day/:title
+# 分页, 每页显示文章数
+paginate: 15
+paginate_path: /page:num
+# 设置时区, 默认本地操作系统时间
 timezone: Asia/Shanghai
-# MatJek specific configurations
-# github_profile: "https://github.com/Yorkzhang19961122"
-# user: "York zhang"
-# user_email: "zyk961122@gmail.com"
-# contact_url: "https://goo.gl/tVljbV"
-# google_tracking_id: "UA-96359860-1"
-# google_site_verification: "UA-96359860-1"
-# disqus_shortname: "matjek"
+
+# 个人信息配置
+github_profile: "https://github.com/monkey-soft"
+user: "猴哥"
+user_email: "chanql123@163.com"
+#contact_url: "https://goo.gl/tVljbV"
+
+# 统计
+# Analytics settings
+# google_tracking_id: ""
+# google_site_verification: ""
+
+# 评论系统
+#disqus_shortname: ""
+
+# Gems
+plugins: [jekyll-paginate]
 
 # Build settings
 markdown: kramdown
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
