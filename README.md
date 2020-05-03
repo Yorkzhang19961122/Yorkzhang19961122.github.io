@@ -1,5 +1,7 @@
-### 关于我
+## About me
 
-这是我的个人博客，基于MatJek的模板进行搭建
+### This is my personal blog, based on Jekyll.
+
+
 
 
