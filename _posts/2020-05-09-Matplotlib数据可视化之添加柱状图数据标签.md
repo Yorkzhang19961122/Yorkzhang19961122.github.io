@@ -9,9 +9,10 @@ comments: 1
 
 #### Matplotlib: plt.text()给图形添加数据标签  
 ##### 数据可视化呈现的最基础图形就是：柱状图、水平条形图、折线图等  
+
 > 在Python的matplotlib库中分别可用bar、barh、plot函数来构建它们，再使用xticks和yticks（设置坐标轴刻度）、xlabel和ylabel（设置坐标轴标签）、title（标题）、legend（图例）、xlim和ylim（设置坐标轴数据范围）、grid（设置网格线）等来装饰图形  
 
-&emsp;&emsp;下面是一个柱状图添加数据标签的例子：  
+&emsp;&emsp;下面是一个柱状图添加数据标签的例子：   
 ``` python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -38,10 +39,14 @@ for a,b in zip(x,y):
 plt.savefig('images\squares.png')
 plt.show()
 ```
-&emsp;&emsp;首先，前边设置的x、y值其实就代表了不同柱子在图形中的位置（坐标），通过for循环找到每一个x、y值的相应坐标——a、b，再使用plt.text在对应位置添文字说明来生成相应的数字标签，而for循环也保证了每一个柱子都有标签。其中，a, b+0.05表示在每一柱子对应x值、y值上方0.05处标注文字说明，'%.0f' % b,代表标注的文字，即每个柱子对应的y值，其中0表示不显示小数后面的数值，1就表示显示小数后面一位，以此类推； ha='center', va= 'bottom'代表horizontalalignment（水平对齐）、verticalalignment（垂直对齐）的方式，fontsize则是文字大小。  
-&emsp;&emsp;条形图、折线图也是如此设置，饼图则在pie命令中有数据标签的对应参数。对于累积柱状图、双轴柱状图则需要用两个for循环，同时通过a与b的不同加减来设置数据标签位置。
+&emsp;&emsp;首先，前边设置的x、y值其实就代表了不同柱子在图形中的位置（坐标），通过for循环找到每一个x、y值的相应坐标——a、b，再使用plt.text在对应位置添文字说明来生成相应的数字标签，而for循环也保证了每一个柱子都有标签。其中，`a`,` b+0.05`表示在每一柱子对应x值、y值上方0.05处标注文字说明，`'%.0f' % b`,代表标注的文字，即每个柱子对应的y值，其中0表示不显示小数后面的数值，1就表示显示小数后面一位，以此类推；` ha='center'`,` va= 'bottom'`代表horizontalalignment（水平对齐）、verticalalignment（垂直对齐）的方式，`fontsize`则是文字大小。  
+
+&emsp;&emsp;条形图、折线图也是如此设置，饼图则在pie命令中有数据标签的对应参数。对于累积柱状图、双轴柱状图则需要用两个for循环，同时通过a与b的不同加减来设置数据标签位置。  
+
 &emsp;&emsp;绘制的图像如下：  
-![01](./blog_img/2020-05-08-matplotlib添加数据标签/01.png)
+
+![01](./blog_img/2020-05-08-matplotlib添加数据标签/01.png)  
+
 &emsp;&emsp;在我的项目应用中，需要把算法识别到的不同动作次数用柱状图可视化表示出来。参考上面的例子:  
 ```python
 # 绘制结果柱状图
@@ -66,6 +71,9 @@ plt.show()
 ```
 &emsp;&emsp;最终绘制的图像为：  
 ![02](./blog_img/2020-05-08-matplotlib添加数据标签/02.png)  
+
+
+
 
 
 
