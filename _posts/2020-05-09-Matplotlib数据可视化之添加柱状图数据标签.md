@@ -36,7 +36,7 @@ plt.axis([0,11,0,110])
 for a,b in zip(x,y):
     plt.text(a,b+0.05,'%.0f'%b,ha = 'center',va = 'bottom',fontsize=7)
 # 保存绘制的图像
-plt.savefig('images\squares.png')
+plt.savefig('images/squares.png')
 plt.show()
 ```
 &emsp;&emsp;首先，前边设置的x、y值其实就代表了不同柱子在图形中的位置（坐标），通过for循环找到每一个x、y值的相应坐标——a、b，再使用plt.text在对应位置添文字说明来生成相应的数字标签，而for循环也保证了每一个柱子都有标签。其中，`a`,` b+0.05`表示在每一柱子对应x值、y值上方0.05处标注文字说明，`'%.0f' % b`,代表标注的文字，即每个柱子对应的y值，其中0表示不显示小数后面的数值，1就表示显示小数后面一位，以此类推；` ha='center'`,` va= 'bottom'`代表horizontalalignment（水平对齐）、verticalalignment（垂直对齐）的方式，`fontsize`则是文字大小。  
